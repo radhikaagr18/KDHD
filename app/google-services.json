@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "504466351066",
+    "firebase_url": "https://kdhd-1b4e2.firebaseio.com",
+    "project_id": "kdhd-1b4e2",
+    "storage_bucket": "kdhd-1b4e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504466351066:android:e40c091a89372da2e2d6e3",
+        "android_client_info": {
+          "package_name": "com.parana.kdhd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504466351066-m48gt0s094s24bdtnaiqbh8kos6ppn2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCenNaVi5hk8wNET1MCzBV2KDILLvjO5AA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504466351066-m48gt0s094s24bdtnaiqbh8kos6ppn2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
