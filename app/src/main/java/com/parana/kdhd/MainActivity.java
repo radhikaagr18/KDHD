@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements FacebookFragment.OnFragmentInteractionListener {
 
@@ -11,6 +13,8 @@ public class MainActivity extends AppCompatActivity implements FacebookFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button reqSec = findViewById(R.id.req_sec);
 
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements FacebookFragment.
             // Create a new Fragment to be placed in the activity layout
             FacebookFragment fbFragment = new FacebookFragment();
 
+
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
             //firstFragment.setArguments(getIntent().getExtras());
@@ -34,6 +39,16 @@ public class MainActivity extends AppCompatActivity implements FacebookFragment.
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container_view, fbFragment).commit();
         }
+
+        reqSec.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+
+                SendReqFragment sendReqFragment = new SendReqFragment();
+                // Code here executes on main thread after user presses button
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container_view, sendReqFragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
