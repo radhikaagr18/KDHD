@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements FacebookFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements FacebookFragment.OnFragmentInteractionListener, LiveRequestsFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button reqSec = findViewById(R.id.req_sec);
+        Button pendingSec = findViewById(R.id.pending_sec);
 
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
@@ -49,10 +49,26 @@ public class MainActivity extends AppCompatActivity implements FacebookFragment.
                         .replace(R.id.fragment_container_view, sendReqFragment).addToBackStack(null).commit();
             }
         });
+
+        pendingSec.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+
+                LiveRequestsFragment liveRequestsFragment = new LiveRequestsFragment();
+                // Code here executes on main thread after user presses button
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container_view, liveRequestsFragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(Request item) {
 
     }
 }
