@@ -2,7 +2,10 @@ package com.parana.kdhd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.net.Uri;
+
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements FacebookFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Button reqSec = findViewById(R.id.req_sec);
 
@@ -53,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements FacebookFragment.
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+        
+
 
     }
 }
