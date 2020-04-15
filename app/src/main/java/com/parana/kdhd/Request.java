@@ -10,8 +10,9 @@ public class Request {
     String lat;// lattitude
     String log;//longitude
     Long postedTime;
+    String id;
 
-    public Request(String username ,String age,String city,String phNo ,  String details, String lat, String log) {
+    public Request(String id,String username ,String age,String city,String phNo ,  String details, String lat, String log) {
         this.username = username;
         this.age = age;
         this.city = city;
@@ -20,9 +21,14 @@ public class Request {
         this.lat = lat;
         this.log = log;
         this.postedTime = System.currentTimeMillis();
+        this.id = id;
     }
 
     public Request() {
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getLat() {

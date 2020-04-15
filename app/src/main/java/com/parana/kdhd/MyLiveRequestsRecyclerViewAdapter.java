@@ -2,6 +2,10 @@ package com.parana.kdhd;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +25,9 @@ public class MyLiveRequestsRecyclerViewAdapter extends RecyclerView.Adapter<MyLi
 
     private List<Request> mValues;
     private final OnListFragmentInteractionListener mListener;
+
+    LiveRequestsFragment parent = new LiveRequestsFragment();
+    AddRequest abcd = new AddRequest();
 
     public MyLiveRequestsRecyclerViewAdapter(List<Request> items, OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -43,6 +50,33 @@ public class MyLiveRequestsRecyclerViewAdapter extends RecyclerView.Adapter<MyLi
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("click: ",mValues.get(position).getId());
+                //parent.showAlert(mValues.get(position).id,mValues.get(position).city);
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(v.getContext());
+                builder1.setMessage("Approve the request");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                abcd.approveRequest(mValues.get(position).id,mValues.get(position).city);
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "Delete",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                abcd.removeData(mValues.get(position).city,"created",mValues.get(position).id);
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.

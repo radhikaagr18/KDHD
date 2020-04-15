@@ -95,9 +95,7 @@ public class SendReqFragment extends Fragment implements AdapterView.OnItemSelec
                 String age = ageInput.getText().toString();
                 String requestTxt = requestInput.getText().toString();
 
-                Request request = new Request("Pruthul",age,district,phoneNo,requestTxt,latitude,longitude);
-
-                AddRequest.addRequest(request);
+                AddRequest.addRequest("Pruthul",age,district,phoneNo,requestTxt,latitude,longitude);
 
                 phoneNoInput.setText("");
                 ageInput.setText("");

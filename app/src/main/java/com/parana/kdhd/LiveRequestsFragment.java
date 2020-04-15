@@ -1,16 +1,22 @@
 package com.parana.kdhd;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.parana.kdhd.dummy.DummyContent;
 
@@ -30,6 +36,10 @@ public class LiveRequestsFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+
+    AlertDialog.Builder builder;
+
+    AddRequest abc = new AddRequest();
 
     List<Request> msgs = new ArrayList<>();
 
@@ -55,7 +65,10 @@ public class LiveRequestsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        msgs = AddRequest.getRequests("created","Kozhikode");
+
+
+        msgs = abc.getRequests("created","Kollam");
+        Log.i("type: ",msgs.toString());
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -68,6 +81,8 @@ public class LiveRequestsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_liverequests_list, container, false);
 
        // msgs.add(new Request("ramu","23","dubai","222222","holaa","21.00","56.02"));
+
+        //msgs = abc.getRequests("created","Kozhikode");
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -83,6 +98,12 @@ public class LiveRequestsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //abc.tmp.clear();
+
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -100,6 +121,7 @@ public class LiveRequestsFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
